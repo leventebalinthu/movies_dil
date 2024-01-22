@@ -1,0 +1,75 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "jest": {
+    "testTimeout": 10000,
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 71,
+        "functions": 73,
+        "lines": 57,
+        "statements": 56
+      }
+    },
+    "restoreMocks": true,
+    "clearMocks": true,
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "setupFiles": [
+      "dotenv-flow/config"
+    ],
+    "testMatch": [
+      "./**/*.spec.ts"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/src/config.ts",
+      "/src/index.ts",
+      "/test/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ]
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=local ts-node-dev -r dotenv-flow/config ./src/index.ts",
+    "test": "jest --clearCache && tsc --noEmit && npm run style && npm run coverage",
+    "coverage": "cross-env NODE_ENV=test jest --coverage --testMatch=./**/*.spec.ts",
+    "eslint": "eslint \"src/**/*.ts\"",
+    "format": "npm run eslint -- --fix",
+    "style": "npm run eslint"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.11",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "nock": "^13.5.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv-flow": "^4.1.0",
+    "express": "^4.18.2",
+    "got": "^11.8.6",
+    "helmet": "^7.1.0",
+    "ts-node-dev": "^2.0.0"
+  }
+}
